@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <partial name="_Styles" />
+    @RenderSection("Stylesheets",required:false)
+</head>
+<body>
+    <nav class="sm-navbar">
+  <div class="sm-logo">
+    <a>RP</a>
+  </div>
+  <ul class="sm-nav-menu">
+    <li><a href="~/Identity/Account/Login" class="nav-links">login</a></li>
+    <li><a href="/SignUp" class="nav-links">signup</a></li>
+
+  </ul>
+</nav>
+    <div>
+        @RenderBody()
+    </div>
+    <partial name="_Scripts" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

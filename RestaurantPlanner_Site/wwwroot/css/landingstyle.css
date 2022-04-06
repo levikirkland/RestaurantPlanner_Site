@@ -1,0 +1,268 @@
+﻿.section-heading h3 {
+    margin-bottom: 1rem;
+    font-size: 3.125rem;
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.section-heading .line {
+    width: 120px;
+    height: 5px;
+    margin: 30px auto 0;
+    border-radius: 6px;
+    background: #2d2ed4;
+    background: -webkit-gradient(linear, left top, right top, from(#e24997), to(#2d2ed4));
+    background: linear-gradient(to right, #e24997, #2d2ed4);
+}
+h2 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 50px;
+}
+
+.highlight {
+    color: #2ac5ed;
+}
+
+#content {
+    padding: 20px 0;
+}
+
+    #content .features-list {
+        padding-top: 35px;
+    }
+
+.features-list .feature-block {
+    margin-bottom: 18px;
+}
+
+    .features-list .feature-block .ico {
+        font-size: 37px;
+        line-height: 70px;
+        width: 70px;
+        height: 70px;
+        background: #5accff;
+        display: inline-block;
+        border-radius: 50%;
+        color: #FFFFFF;
+        margin-bottom: 10px;
+    }
+
+    .features-list .feature-block.bottom-line .ico {
+        width: auto;
+        height: auto;
+        background: transparent;
+        color: #5accff;
+        text-align: center;
+        font-size: 41px;
+        vertical-align: top;
+        margin-top: -10px;
+    }
+
+    .features-list .feature-block.bottom-line .fa-github {
+        font-size: 50px;
+    }
+
+    .features-list .feature-block.bottom-line .fa-dashboard {
+        font-size: 45px;
+        margin-top: -15px;
+    }
+
+    .features-list .feature-block.bottom-line .ico {
+        float: left;
+        margin-right: 15px;
+        margin-left: 21px;
+    }
+
+    .features-list .feature-block.bottom-line .features-content {
+        padding-right: 15px;
+        display: table;
+    }
+
+        .features-list .feature-block.bottom-line .features-content .name {
+            margin-bottom: 5px;
+        }
+
+        .features-list .feature-block.bottom-line .features-content .subname {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+    .features-list .feature-block .name {
+        font-size: 20px;
+        line-height: 1.25em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .features-list .feature-block .text {
+        font-size: 12px;
+        line-height: normal;
+        margin-bottom: 15px;
+    }
+.sm-navbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 100px;
+    align-items: center;
+}
+
+.sm-logo {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid transparent;
+}
+
+
+.sm-nav-menu {
+    display: flex;
+    margin-right: 30px;
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    text-align: center;
+    margin: 20px auto;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.nav-links {
+    margin-left: 50px;
+    margin-right: 20px;
+    padding: 8px;
+    display: inline-block;
+    border-bottom: 3px solid;
+    background: white;
+    padding: 8px;
+    transform: scale(1.1);
+}
+/* pricing table */
+.pricing-table {
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+    .pricing-table td {
+        padding: 0px;
+        border-left: 1px solid transparent;
+    }
+
+    .pricing-table .pricing-table-list td {
+        padding: 10px 8px;
+        font-weight: 500;
+        text-align: center;
+        font-size: 12px;
+        background: #F9F9F9;
+    }
+
+    .pricing-table .pricing-table-list .glyphicon-ok {
+        color: #68AF27;
+    }
+
+    .pricing-table .pricing-table-list .glyphicon-remove {
+        color: #C22439;
+    }
+
+    .pricing-table .pricing-table-list td:first-child {
+        font-weight: 600;
+        text-align: left;
+        border-left: 0px;
+        font-size: 11px;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    .pricing-table .pricing-table-list:nth-child(2n) td {
+        background: #F2F2F2;
+    }
+
+    .pricing-table .pricing-table-text h2 {
+        font-size: 35px;
+        font-weight: 300;
+        line-height: 33px;
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+        color: #009AD7;
+    }
+
+    .pricing-table .pricing-table-text p {
+        font-size: 12px;
+        font-weight: 400;
+        text-align: center;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    .pricing-table .pricing-table-item {
+        color: #FFF;
+    }
+
+        .pricing-table .pricing-table-item .pricing-table-item-head {
+            padding: 10px 5px;
+            text-align: center;
+            background: #009AD7;
+        }
+
+            .pricing-table .pricing-table-item .pricing-table-item-head p {
+                font-size: 17px;
+                font-weight: 600;
+                line-height: 21px;
+                text-transform: uppercase;
+                margin-bottom: 0px;
+            }
+
+            .pricing-table .pricing-table-item .pricing-table-item-head span {
+                font-size: 11px;
+                font-weight: 400;
+            }
+
+        .pricing-table .pricing-table-item .pricing-table-item-price {
+            padding: 15px 10px;
+            text-align: center;
+            background: #FFF;
+            color: #009AD7;
+        }
+
+            .pricing-table .pricing-table-item .pricing-table-item-price p {
+                font-size: 41px;
+                font-weight: 400;
+                line-height: 36px;
+                margin-bottom: 0px;
+            }
+
+                .pricing-table .pricing-table-item .pricing-table-item-price p span {
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+
+            .pricing-table .pricing-table-item .pricing-table-item-price > span {
+                font-size: 12px;
+                font-weight: 400;
+                color: #009AD7
+            }
+
+        .pricing-table .pricing-table-item .pricing-table-item-purchase {
+            padding: 10px 5px;
+            background: #FFF;
+        }
+
+            .pricing-table .pricing-table-item .pricing-table-item-purchase .btn {
+                text-transform: uppercase;
+                margin-bottom: 0px;
+            }
+/* eof pricing table */    
+

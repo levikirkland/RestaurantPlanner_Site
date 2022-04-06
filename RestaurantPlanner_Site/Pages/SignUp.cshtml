@@ -1,0 +1,130 @@
+﻿@page 
+@using RestaurantPlanner_Site.Pages
+@using RestaurantPlanner_Site.Models
+@model SignUpModel
+@{
+    ViewData["Title"] = "SignUp";
+
+}
+@section Stylesheets
+{
+    <link rel="stylesheet" href="~/css/landingstyle.css" />
+}
+
+<div class="text-center mt-4">
+<h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;">Get <span class="highlight">Started</span></h2>
+<p class="lead">
+	This is Step 1 in the sign up process. Fill in All the fields below. When ready, click Submit.
+</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-5">
+                        <label asp-for="AccountInfo.CompanyName" class="control-label"></label>
+                        <input asp-for="AccountInfo.CompanyName" class="form-control" />
+                        <span asp-validation-for="AccountInfo.CompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-6">
+                    <label asp-for="AccountInfo.FirstName" class="control-label"></label>
+                    <input asp-for="AccountInfo.FirstName" class="form-control" />
+                    <span asp-validation-for="AccountInfo.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="AccountInfo.LastName" class="control-label"></label>
+                    <input asp-for="AccountInfo.LastName" class="form-control" />
+                    <span asp-validation-for="AccountInfo.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="AccountInfo.EmailAddress" class="control-label"></label>
+                    <input asp-for="AccountInfo.EmailAddress" class="form-control" />
+                    <span asp-validation-for="AccountInfo.EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="AccountInfo.Phone" class="control-label"></label>
+                    <input asp-for="AccountInfo.Phone" class="form-control" />
+                    <span asp-validation-for="AccountInfo.Phone" class="text-danger"></span>
+                </div>
+                </div>                
+                <div class="form-group">
+                    <label asp-for="AccountInfo.Address1" class="control-label"></label>
+                    <input asp-for="AccountInfo.Address1" class="form-control" />
+                    <span asp-validation-for="AccountInfo.Address1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccountInfo.Address2" class="control-label"></label>
+                    <input asp-for="AccountInfo.Address2" class="form-control" />
+                    <span asp-validation-for="AccountInfo.Address2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccountInfo.City" class="control-label"></label>
+                    <input asp-for="AccountInfo.City" class="form-control" />
+                    <span asp-validation-for="AccountInfo.City" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label asp-for="AccountInfo.State" class="control-label"></label>
+                        <select asp-for="AccountInfo.State" class="form-control"  asp-items="Html.GetEnumSelectList<States>()"></select>
+                        <span asp-validation-for="AccountInfo.State" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-3">
+                        <label asp-for="AccountInfo.Zipcode" class="control-label"></label>
+                        <input asp-for="AccountInfo.Zipcode" class="form-control" />
+                        <span asp-validation-for="AccountInfo.Zipcode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row col-12">
+                    <div class="col-3 border border-primary">
+                        <h5 class="text-primary">Basic</h5>
+                        <p class="mb-n1 pb-n1">Small diners and restaurants wanting to keep better track of food costs. Upload vendor price lists, keep track of spending, and manage inventory.</p>
+                        <div class="pl-3">
+                            <input asp-for="AccountInfo.AccountType" value="1" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />                    
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                <strong>479 /yr</strong>
+                            </label>    
+                        </div>
+                    </div>
+                    <div class="col-3 border border-success">
+                        <h5 class="text-success">Advanced</h5>
+                        <p class="mb-n1 pb-n1">Small and medium-sized business solution featuring up to 3 locations, vanity domain name, and scalable resources.</p>
+                        <div class="pl-3">
+                            <input asp-for="AccountInfo.AccountType" value="2" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />                        
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                <strong>649 /yr</strong>
+                            </label>
+                        </div>
+                    </div>
+                   <div class="col-3 border border-danger form-check">
+                        <h5 class="text-danger">Pro</h5>
+                        <p class="mb-n1 pb-n1">Enterprise level solution designed for the multiple locations, users, and maximum securtiy.</p>
+                        <div class="pl-3">
+                            <input asp-for="AccountInfo.AccountType" value="3" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                            <label class="form-check-label " for="flexRadioDefault3">
+                            <strong>1299 /yr</strong>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group pt-4">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

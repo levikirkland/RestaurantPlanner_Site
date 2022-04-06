@@ -1,0 +1,23 @@
+﻿@page
+@using RestaurantPlanner_Site.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@section Stylesheets
+{
+    <link rel="stylesheet" href="~/css/landingstyle.css" />
+}
+
+
+<div class="container">
+<partial name="_Features" />
+
+<hr />
+
+<partial name="_Pricing" />
+
+<partial name="_Footer" />
+
+</div>
