@@ -84,7 +84,7 @@
                         <h5 class="text-primary">Basic</h5>
                         <p class="mb-n1 pb-n1">Small diners and restaurants wanting to keep better track of food costs. Upload vendor price lists, keep track of spending, and manage inventory.</p>
                         <div class="pl-3">
-                            <input asp-for="AccountInfo.AccountType" value="1" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />                    
+                            <input asp-for="AccountInfo.AccountType" value="@AccountTypes.Basic" class="form-check-input" type="radio" id="flexRadioDefault" />                    
                             <label class="form-check-label" for="flexRadioDefault1">
                                 <strong>479 /yr</strong>
                             </label>    
@@ -94,7 +94,7 @@
                         <h5 class="text-success">Advanced</h5>
                         <p class="mb-n1 pb-n1">Small and medium-sized business solution featuring up to 3 locations, vanity domain name, and scalable resources.</p>
                         <div class="pl-3">
-                            <input asp-for="AccountInfo.AccountType" value="2" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />                        
+                            <input asp-for="AccountInfo.AccountType" value="@AccountTypes.Advanced" class="form-check-input" type="radio" id="flexRadioDefault" />                        
                             <label class="form-check-label" for="flexRadioDefault2">
                                 <strong>649 /yr</strong>
                             </label>
@@ -104,7 +104,7 @@
                         <h5 class="text-danger">Pro</h5>
                         <p class="mb-n1 pb-n1">Enterprise level solution designed for the multiple locations, users, and maximum securtiy.</p>
                         <div class="pl-3">
-                            <input asp-for="AccountInfo.AccountType" value="3" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                            <input asp-for="AccountInfo.AccountType" value="@AccountTypes.Pro" class="form-check-input" type="radio"  id="flexRadioDefault" />
                             <label class="form-check-label " for="flexRadioDefault3">
                             <strong>1299 /yr</strong>
                             </label>

@@ -31,10 +31,10 @@ namespace RestaurantPlanner_Site.Pages
 
            var result =  await new AccountService().CreateAccountAsync(AccountInfo);
             
-           
-            return RedirectToPage("./Index");
+           //if (result)
+           //     await new AccountService().CreateNewSuperAdmin(AccountInfo);
 
-           
+            return RedirectToPage("./Success");
         }
     }
 }
