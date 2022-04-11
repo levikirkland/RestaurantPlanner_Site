@@ -1,82 +1,131 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestaurantPlanner_Site.Interfaces;
 using RestaurantPlanner_Site.Models;
 using RestSharp;
-using System.Net.Http;
-using System.Net.Http.Formatting;
+using RestSharp.Authenticators;
 using System.Net.Http.Headers;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
+using System.Net.Mail;
+using System.Threading;
 
 namespace RestaurantPlanner_Site.Services
 {
     public class AccountService
     {
-        private static HttpClient _httpClient = new HttpClient();
-        private static RestClient _restClient = new RestClient();   
+
+        private readonly ISignUpConfig _signUpConfig;
+ 
+        public AccountService(ISignUpConfig signUpConfig)
+        {
+            _signUpConfig = signUpConfig;            
+        }
 
         public async Task<bool> CreateAccountAsync(AccountInfo accountInfo)
         {
-            var serialized = JsonConvert.SerializeObject(accountInfo);
+            string BaseAddress = _signUpConfig.BaseAddress;
+            string ApiKey = _signUpConfig.ApiKey;
+            var cancellationToken = new CancellationToken();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7277/AccountInfo/InsertAccountInfo") { Version = new Version(2, 0) };
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //   InsertAccountInfo
 
-            request.Content = new StringContent(serialized);
-            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var client = new RestClient(BaseAddress);
 
-            try
-            {
-                var response = await _httpClient.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var content = await response.Content.ReadAsStringAsync();
-                var createdMovie = JsonConvert.DeserializeObject<AccountInfo>(content);
-                return true;
-            }
-            catch (Exception ex)
-            { 
-                Console.WriteLine(ex.Message);
+            var request = new RestRequest($"/api/AccountInfo/insertaccountinfo", Method.Post).AddJsonBody(accountInfo)
+                .AddHeader("accept", "application/json")
+                .AddHeader("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
+
+            var response = await client.PostAsync<NewAccountResponse>(request, cancellationToken);
+
+            if (response.statusCode != 200)
                 return false;
-            }
+
+            return true;
         }
 
-        public async Task<bool> CreateNewSuperAdmin(AccountInfo accountInfo)
-        {
-            var serialized = JsonConvert.SerializeObject(accountInfo);
+        //public async Task<bool> CreateNewSuperAdmin(AccountInfo accountInfo)
+        //{
+        //    string BaseAddress = _signUpConfig.BaseAddress;
+        //    string ApiKey = _signUpConfig.ApiKey;
+        //    var cancellationToken = new CancellationToken();
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7277/AccountInfo/CreateNewSuperAdminUser") { Version = new Version(2, 0) };
-            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //    //    /api/AccountInfo/CreateNewSuperAdminUser
 
-            request.Content = new StringContent(serialized);
-            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //    var client = new RestClient(BaseAddress);
 
-            try
-            {
-                var response = await _httpClient.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var content = await response.Content.ReadAsStringAsync();
-                var createdMovie = JsonConvert.DeserializeObject<AccountInfo>(content);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
+        //    var request = new RestRequest($"/api/AccountInfo/createnewsuperadminUser")
+        //        .AddHeader("accept", "application/json")
+        //        .AddHeader("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
+
+        //    var response = await client.GetAsync<NewAccountResponse>(request, cancellationToken);
+
+        //    if (response.statusCode != 200)
+        //        return false;
+
+        //    return true;
+        //}
 
         public async Task<bool> IsUniqueEmail(string EmailAddress)
         {
+            var cancellationToken = new CancellationToken();
+
+            string BaseAddress = _signUpConfig.BaseAddress;
+            string ApiKey = _signUpConfig.ApiKey;
+
+            var client = new RestClient(BaseAddress);
             
-            var request = new RestRequest($"https://localhost:7277/AccountInfo/IsUniqueEmail?EmailAddress={EmailAddress}");
-            var response = await _restClient.ExecuteGetAsync(request);
-            if (!response.IsSuccessful)
-            {
-                //Logic for handling unsuccessful response
-            }
+            var request = new RestRequest($"/api/AccountInfo/issuniqueemail?EmailAddress={EmailAddress}")
+                .AddHeader("accept", "application/json")
+                .AddHeader("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
+            
+            var  response = await client.GetAsync<ValueResponse>(request, cancellationToken);
 
-            Console.WriteLine(response.Content);
+            if (response.statusCode == 200)
+                return response.value;
 
-            return Convert.ToBoolean(response.Content);
+            return response.value;
+
         }
     }
+
+    public class ValueResponse
+    {
+        public bool value { get; set; }
+        public int statusCode { get; set; }
+        public object contentType { get; set; }
+    }
+
+    public class NewAccount
+    {
+        public int id { get; set; }
+        public string companyName { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string emailAddress { get; set; }
+        public string phone { get; set; }
+        public string address1 { get; set; }
+        public string address2 { get; set; }
+        public string city { get; set; }
+        public int state { get; set; }
+        public string zipcode { get; set; }
+        public int accountType { get; set; }
+        public DateTime deactivationDate { get; set; }
+        public bool isActive { get; set; }
+        public DateTime signUpDate { get; set; }
+        public string usPhone { get; set; }
+        public string canPhone { get; set; }
+        public string fullAddress { get; set; }
+        public List<object> domainEvents { get; set; }
+        public DateTime createdDate { get; set; }
+        public DateTime modifiedDate { get; set; }
+        public string createdBy { get; set; }
+        public string modifiedBy { get; set; }
+    }
+
+    public class NewAccountResponse
+{
+        public NewAccount value { get; set; }
+        public int statusCode { get; set; }
+        public object contentType { get; set; }
+    }
+     
 }

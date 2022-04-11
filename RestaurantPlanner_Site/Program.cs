@@ -1,7 +1,10 @@
 using FluentValidation.AspNetCore;
+using RestaurantPlanner_Site.Interfaces;
+using RestaurantPlanner_Site.Models;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -15,6 +18,9 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+builder.Services.AddSingleton<ISignUpConfig, SignUpConfig>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

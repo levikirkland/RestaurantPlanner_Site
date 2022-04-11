@@ -1,5 +1,6 @@
 ﻿using RestaurantPlanner_Site.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestaurantPlanner_Site.Models
 {
@@ -26,11 +27,14 @@ namespace RestaurantPlanner_Site.Models
         [Display(Name = "Account Type")]
         public AccountTypes AccountType { get; set; }
         [Display(Name = "Deactivation Date")]
-        public DateTime? DeactivationDate { get; set; }
-        public bool? IsActive { get; set; } 
-        public DateTime SignUpDate { get; set; }
+        public DateTime? DeactivationDate { get; set; } = DateTime.MaxValue;
+        public bool? IsActive { get; set; } = true;
+        public DateTime SignUpDate { get; set; } = DateTime.Today;
+        [NotMapped]
         public string USPhone => String.Format("{0:(###) ###-####}", $"{Phone}");
+        [NotMapped]
         public string CanPhone => String.Format("{0:(###) ###-####}", $"{Phone}");
+        [NotMapped]
         public string FullAddress => $"{Address1} {City} {State} {Zipcode}"; 
     }
 }
