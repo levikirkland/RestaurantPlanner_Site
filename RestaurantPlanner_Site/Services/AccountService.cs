@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RestaurantPlanner_Site.Interfaces;
+﻿using RestaurantPlanner_Site.Interfaces;
 using RestaurantPlanner_Site.Models;
 using RestSharp;
-using RestSharp.Authenticators;
-using System.Net.Http.Headers;
-using System.Net.Mail;
-using System.Threading;
 
 namespace RestaurantPlanner_Site.Services
 {
@@ -108,17 +102,6 @@ namespace RestaurantPlanner_Site.Services
         public int state { get; set; }
         public string zipcode { get; set; }
         public int accountType { get; set; }
-        public DateTime deactivationDate { get; set; }
-        public bool isActive { get; set; }
-        public DateTime signUpDate { get; set; }
-        public string usPhone { get; set; }
-        public string canPhone { get; set; }
-        public string fullAddress { get; set; }
-        public List<object> domainEvents { get; set; }
-        public DateTime createdDate { get; set; }
-        public DateTime modifiedDate { get; set; }
-        public string createdBy { get; set; }
-        public string modifiedBy { get; set; }
     }
 
     public class NewAccountResponse

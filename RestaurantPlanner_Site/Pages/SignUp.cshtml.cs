@@ -37,7 +37,7 @@ namespace RestaurantPlanner_Site.Pages
             }
             var result = await new AccountService(_signUpConfig).CreateAccountAsync(AccountInfo);
             if (result)
-                return RedirectToPage("./Success");
+                return RedirectToPage($"./Success", new {emailaddress = AccountInfo.EmailAddress});
 
             return RedirectToPage("./Error");
         }
