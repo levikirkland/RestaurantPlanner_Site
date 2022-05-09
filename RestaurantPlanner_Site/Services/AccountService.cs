@@ -36,28 +36,6 @@ namespace RestaurantPlanner_Site.Services
             return true;
         }
 
-        //public async Task<bool> CreateNewSuperAdmin(AccountInfo accountInfo)
-        //{
-        //    string BaseAddress = _signUpConfig.BaseAddress;
-        //    string ApiKey = _signUpConfig.ApiKey;
-        //    var cancellationToken = new CancellationToken();
-
-        //    //    /api/AccountInfo/CreateNewSuperAdminUser
-
-        //    var client = new RestClient(BaseAddress);
-
-        //    var request = new RestRequest($"/api/AccountInfo/createnewsuperadminUser")
-        //        .AddHeader("accept", "application/json")
-        //        .AddHeader("XApiKey", "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp");
-
-        //    var response = await client.GetAsync<NewAccountResponse>(request, cancellationToken);
-
-        //    if (response.statusCode != 200)
-        //        return false;
-
-        //    return true;
-        //}
-
         public async Task<bool> IsUniqueEmail(string EmailAddress)
         {
             var cancellationToken = new CancellationToken();
