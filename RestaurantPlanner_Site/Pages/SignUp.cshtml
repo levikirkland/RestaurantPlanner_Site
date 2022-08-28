@@ -129,24 +129,16 @@
        </div>
        <div class="col-lg-4">
            <div class="card mb-4">
-        <div class="card-header">Two-Factor Authentication</div>
+        <div class="card-header">Password Authentication</div>
         <div class="card-body">
-            <p>Add another level of security to your account by enabling two-factor authentication. We will send you a
-                text message to verify your login attempts on unrecognized devices and browsers.</p>
+            <p>Enter your password below, and confirm your password, to create your account.</p>
             <form>
-                <div class="form-check">
-                    <input class="form-check-input" id="twoFactorOn" type="radio" name="twoFactor" checked="">
-                    <label class="form-check-label" for="twoFactorOn">On</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" id="twoFactorOff" type="radio" name="twoFactor">
-                    <label class="form-check-label" for="twoFactorOff">Off</label>
-                </div>
-                <div class="mt-3">
-                    <label class="small mb-1" for="twoFactorSMS">SMS Number</label>
-                    <input class="form-control" id="twoFactorSMS" type="tel" placeholder="Enter a phone number"
-                        value="555-123-4567">
-                </div>
+                <input type="password" class=" border-bottom-1" id="password" placeholder="your password" onkeyup='check()'>
+
+      
+                 <input type="password" id="checkPassword" class="password" placeholder="confirm your password" onkeyup='check()'>
+         
+                 <p id="alertPassword"></p>
             </form>
         </div>
     </div>
@@ -172,4 +164,17 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+         var check = function() {
+              if (document.getElementById('password').value ==
+                  document.getElementById('checkPassword').value) {
+                  document.getElementById('alertPassword').style.color = '#8CC63E';
+                  document.getElementById('alertPassword').innerHTML = '<span><i class="fas fa-check-circle"></i>Match !</span>';
+              } else {
+      		        document.getElementById('alertPassword').style.color = '#EE2B39';
+                  document.getElementById('alertPassword').innerHTML = '<span><i class="fas fa-exclamation-triangle"></i>not matching</span>';
+              }
+          }
+    </script>
+
 }
