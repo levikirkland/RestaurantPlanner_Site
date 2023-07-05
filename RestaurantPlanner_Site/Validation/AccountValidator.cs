@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using RestaurantPlanner_Site.Interfaces;
 using RestaurantPlanner_Site.Models;
 using RestaurantPlanner_Site.Services;
 
@@ -6,8 +7,9 @@ namespace RestaurantPlanner_Site.Validation
 {
     public class AccountInfoValidator : AbstractValidator<AccountInfo>
     {
+        private readonly ISignUpConfig _signUpConfig;
 
-        public AccountInfoValidator()
+        public AccountInfoValidator(ISignUpConfig signUpConfig)
         {
             RuleFor(p => p.FirstName).NotEmpty().NotNull();
             RuleFor(p => p.LastName).NotEmpty().NotNull();
@@ -18,11 +20,12 @@ namespace RestaurantPlanner_Site.Validation
             RuleFor(p => p.State).NotNull().NotEmpty().WithMessage("Please select State");
             RuleFor(p => p.Zipcode).NotEmpty().WithMessage("Please add zip code.").MaximumLength(5);
             RuleFor(p => p.Phone).NotEmpty().WithMessage("Please add phone number").MaximumLength(10);
+            _signUpConfig = signUpConfig;
         }
 
         public async Task<bool> BeUniqueEmailAddress(AccountInfo accountInfo, string EmailAddress, CancellationToken cancellationToken)
         {
-            return await new AccountService().IsUniqueEmail(EmailAddress);
+            return await new AccountService(_signUpConfig).IsUniqueEmail(EmailAddress);
         }
     }
 }
